@@ -1,0 +1,19 @@
+{
+  "name": "autogit",
+  "version": "0.0.1",
+  "description": "A tool to auto commit to git on save",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtmorrisbytes/autogit.git"
+  },
+  "author": "Jordan Morris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jtmorrisbytes/autogit/issues"
+  },
+  "homepage": "https://github.com/jtmorrisbytes/autogit#readme"
+}
