@@ -57,7 +57,8 @@ function generateCommitDate() {
 }
 
 function commit(commitReason, filePath) {
-  let commitString = `Autocommit ${dateString} ${timeString}: ${userInfo[0]} (${
+  let { date, time } = generateCommitDate();
+  let commitString = `Autocommit ${date} ${time}: ${userInfo[0]} (${
     userInfo[1]
   }) ${commitReason} '${filePath}'\r\n\r\n${diff(filePath)}`.trim();
   console.log(commitString);
