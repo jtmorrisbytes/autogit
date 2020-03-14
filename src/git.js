@@ -6,24 +6,39 @@ function getUserInfo() {
     .split("\n");
 }
 function add(filePath) {
-  return execSync(`git add ${filePath}`);
+  //   console.log(`added file at '${filePath}'`);
+  addMessage = execSync(`git add ${filePath}`).toString();
+  if (addMessage.length > 0) {
+    console.log("addmessage length", addMessage.length);
+    console.log(addMessage);
+  }
+
+  return addMessage;
 }
 function diff(filePath) {
   return execSync(`git diff ${filePath}`);
 }
 let timezone = "CST";
 let userInfo = getUserInfo();
-function generateCommitMessage(userInfo, commitReason, filePath) {
+function commit(commitReason, filePath) {
   let d = new Date();
   //   d = d - d.getTimezoneOffset();
   let dateString = `${d.getMonth()}/${d.getDay()}/${d.getFullYear()}`;
   let timeString = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()} ${timezone}`;
-  let diff = gitDiff(filePath);
-  let commitString = `Autocommit ${dateString} ${timeString}: ${userInfo[0]} (${userInfo[1]}) ${commitReason} '${filePath}'\r\n\r\n${diff}`;
+
+  let commitString = `Autocommit ${dateString} ${timeString}: ${userInfo[0]} (${
+    userInfo[1]
+  }) ${commitReason} '${filePath}'\r\n\r\n${diff(filePath)}`.trim();
   console.log(commitString);
+  try {
+    execSync(`git commit -m "${commitString}"`);
+  } catch (e) {
+    //   swallow errors for now...
+    console.error(e.toString());
+  }
 }
 module.exports = {
   add,
-  generateCommitMessage,
+  commit,
   diff
 };
