@@ -13,9 +13,11 @@ const watcher = chokidar.watch("**/**", {
 });
 
 watcher.on("ready", () => {
-  if (git.status()) {
+  // try to commit on startup... swallow error if it fails
+  // not an optimal solution, but for now it will work
+  try {
     git.commitAll("on startup");
-  }
+  } catch (e) {}
 
   console.log("ready for changes");
 });
