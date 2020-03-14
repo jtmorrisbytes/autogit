@@ -69,7 +69,10 @@ function commit(commitReason, filePath) {
     console.error(e.toString());
   }
 }
-function commitAll(commitReason, filePath) {}
+function commitAll(commitReason, filePath) {
+  let { date, time } = generateCommitDate();
+  let commitString = `autogit: Autocommiting ${commitReason} for user ${userInfo[0]}`;
+}
 module.exports = {
   add,
   commit,
