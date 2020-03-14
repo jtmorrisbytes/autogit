@@ -21,7 +21,7 @@ watcher.on("change", path => {
     git.add(path);
     git.commit("updated file at", path);
   } else {
-    console.log("File not modified", status);
+    console.log(`'${path}' not modified`);
   }
 
   //   git.add(path);
