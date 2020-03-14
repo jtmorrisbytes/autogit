@@ -16,7 +16,7 @@ watcher.on("change", path => {
   let result = git.status(path);
   if (result.status === git.STATUS_CODES.MODIFIED) {
     git.add(path);
-    git.commit(path);
+    git.commit("updated file at", path);
   } else {
     console.log("STATUS WAS NOT MODIFIED", status);
   }
