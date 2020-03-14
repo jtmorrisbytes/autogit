@@ -29,7 +29,11 @@ watcher.on("change", path => {
 // the watcher will emit this event on startup when searching
 // for files to add
 watcher.on("add", path => {
-  console.log("Watching file", path);
+  let status = git.status(path);
+  if (status === git.STATUS_CODES.MODIFIED) {
+    git.add(path);
+  }
+  //   console.log("Watching file", path);
 });
 // the watcher will emit this event when a file was deleted
 watcher.on("unlink", path => {
