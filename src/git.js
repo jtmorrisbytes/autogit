@@ -11,12 +11,36 @@ function add(filePath) {
   //   console.log(`added file at '${filePath}'`);
   addMessage = execSync(`git add ${filePath}`).toString();
   if (addMessage.length > 0) {
+    S;
     console.log("addmessage length", addMessage.length);
     console.log(addMessage);
   }
 
   return addMessage;
 }
+function status(filePath) {
+  // ?? means untracked
+  // M means modified
+  // A means added
+  // blank means unchanged
+  let status;
+  let result;
+  let resultPath;
+  if (filePath) {
+    result = execSync(`git status --short ${filePath}`)
+      .toString()
+      .trim();
+  }
+  if (result) {
+    status = result.split(" ");
+  }
+  return status;
+}
+const STATUS_CODES = {
+  UNTRACKED: "??",
+  MODIFIED: "M",
+  ADDED: "A"
+};
 function diff(filePath) {
   try {
     return execSync(`git diff ${filePath}`);
@@ -26,7 +50,6 @@ function diff(filePath) {
 }
 function commit(commitReason, filePath) {
   let d = new Date();
-  //   d = d - d.getTimezoneOffset();
   let dateString = `${d.getMonth()}/${d.getDay()}/${d.getFullYear()}`;
   let timeString = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()} ${timezone}`;
 
@@ -44,5 +67,7 @@ function commit(commitReason, filePath) {
 module.exports = {
   add,
   commit,
-  diff
+  diff,
+  status,
+  STATUS_CODES
 };
