@@ -16,9 +16,12 @@ watcher.on("change", path => {
   git.add(path);
   git.commit("updated file at", path);
 });
+// the watcher will emit this event on startup when searching
+// for files to add
 watcher.on("add", path => {
   console.log("Watching file", path);
 });
+// the watcher will emit this event when a file was deleted
 watcher.on("unlink", path => {
   git.add(path);
   git.commit("removed file at", path);
