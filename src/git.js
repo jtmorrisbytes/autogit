@@ -5,6 +5,8 @@ function getUserInfo() {
     .trim()
     .split("\n");
 }
+let timezone = "CST";
+let userInfo = getUserInfo();
 function add(filePath) {
   //   console.log(`added file at '${filePath}'`);
   addMessage = execSync(`git add ${filePath}`).toString();
@@ -22,8 +24,6 @@ function diff(filePath) {
     console.error(e.toString());
   }
 }
-let timezone = "CST";
-let userInfo = getUserInfo();
 function commit(commitReason, filePath) {
   let d = new Date();
   //   d = d - d.getTimezoneOffset();
