@@ -17,9 +17,13 @@ watcher.on("change", path => {
   git.commit("updated file at", path);
 });
 watcher.on("add", path => {
+  git.add(path);
+  git.commit("created file at", path);
   console.log("Watching file", path);
 });
 watcher.on("unlink", path => {
+  git.add(path);
+  git.commit("removed file at", path);
   console.log("a file was removed", path);
 });
 watcher.on("error", console.error);
