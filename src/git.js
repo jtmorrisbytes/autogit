@@ -72,11 +72,16 @@ function commit(commitReason, filePath) {
 function commitAll(commitReason, filePath) {
   let { date, time } = generateCommitDate();
   let commitString = `autogit: Autocommiting ${commitReason} for user ${userInfo[0]}`;
+  try {
+  } catch (e) {
+    console.error(e.toString());
+  }
 }
 module.exports = {
   add,
   commit,
   diff,
   status,
+  commitAll,
   STATUS_CODES
 };
