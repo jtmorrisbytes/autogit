@@ -24,4 +24,3 @@ watcher.on("unlink", path => {
 });
 watcher.on("error", console.error);
 // watcher.on("raw", console.log);
-watcher.on("all", git.add);
