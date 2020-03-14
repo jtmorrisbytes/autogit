@@ -4,7 +4,8 @@
   "description": "A tool to auto commit to git on save",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "postinstall": "echo \"make sure to install git-scm before running this tool"
   },
   "repository": {
     "type": "git",

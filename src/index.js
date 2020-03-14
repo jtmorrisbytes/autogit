@@ -1,7 +1,10 @@
 const chokidar = require("chokidar");
 let git = require("./git");
 
-console.log();
+console.log(
+  "NOTE: Make sure your repository is in sync before using this tool " +
+    "as it currently does not make efforts to resolve conflicts"
+);
 const watcher = chokidar.watch("**/**", {
   persistent: true,
   ignored: /node_modules|(?:(^|[\/\\])\..)/
