@@ -6,9 +6,24 @@
 
 1. Make sure that you have installed [git-scm](https://git-scm.com/download/),
    [Nodejs](https://nodejs.org/en/download/) and npm first before trying to install this tool
-2. Once you have installed git-scm, npm and nodejs, run
-   `npm install -g autogitter`
-   and autogitter will watch all files except dotfiles and node_modules
+2. configure git:
+   ```
+   git config --global user.name "YOUR NAME"
+   git config --global user.email "YOUR EMAIL"
+   ```
+   If you skip this step, you will most likely get errors
+3. Once you have installed git-scm, npm and nodejs, run
+   ```
+   npm install -g autogitter
+   ```
+   to install the module
+4. Once you have installed autogitter, run
+   ```
+   npx autogitter
+   ```
+   from the directory you want to watch,
+   and autogitter will currently watch all files
+   except dotfiles ex: .gitignore and node_modules
 
 ### ISSUES
 
