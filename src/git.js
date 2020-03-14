@@ -19,7 +19,7 @@ function diff(filePath) {
   try {
     return execSync(`git diff ${filePath}`);
   } catch (e) {
-    console.error(e);
+    console.error(e.toString());
   }
 }
 let timezone = "CST";
