@@ -32,6 +32,7 @@ watcher.on("add", path => {
   let status = git.status(path);
   if (status === git.STATUS_CODES.MODIFIED) {
     git.add(path);
+    console.log(`added file${path}`);
   }
   //   console.log("Watching file", path);
 });
