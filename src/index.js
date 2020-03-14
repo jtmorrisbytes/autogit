@@ -2,7 +2,7 @@ const chokidar = require("chokidar");
 let git = require("./git");
 
 console.log();
-const watcher = chokidar.watch("**/**/*.*", {
+const watcher = chokidar.watch("**/**", {
   persistent: true,
   ignored: /node_modules|.git|(?:(^|[\/\\])\..)/
   //   cwd: __dirname
