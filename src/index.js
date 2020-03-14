@@ -13,8 +13,16 @@ watcher.on("ready", () => {
 });
 
 watcher.on("change", path => {
-  git.add(path);
-  git.commit("updated file at", path);
+  let result = git.status(path);
+  if (result.status === git.STATUS_CODES.MODIFIED) {
+    git.add(path);
+    git.commit(path);
+  } else {
+    console.log("STATUS WAS NOT MODIFIED", status);
+  }
+
+  //   git.add(path);
+  //   git.commit("updated file at", path);
 });
 // the watcher will emit this event on startup when searching
 // for files to add
