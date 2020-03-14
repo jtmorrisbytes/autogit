@@ -34,6 +34,7 @@ function status(filePath) {
   if (result) {
     status = result.split(" ");
   }
+  console.log("DIFF result, status", result, status);
   return status;
 }
 const STATUS_CODES = {
