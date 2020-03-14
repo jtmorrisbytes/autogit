@@ -17,8 +17,6 @@ watcher.on("change", path => {
   git.commit("updated file at", path);
 });
 watcher.on("add", path => {
-  git.add(path);
-  git.commit("created file at", path);
   console.log("Watching file", path);
 });
 watcher.on("unlink", path => {
