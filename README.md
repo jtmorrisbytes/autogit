@@ -22,7 +22,8 @@
    npx autogitter
    ```
    from the directory you want to watch,
-   and autogitter will currently watch all files
+   and autogitter will currently watch all files <br />
+   <b>in the current working directory the command was called from</b>
    except dotfiles ex: .gitignore and node_modules
 
 ### ISSUES
