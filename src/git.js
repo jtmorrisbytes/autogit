@@ -74,6 +74,7 @@ function commitAll(commitReason, filePath) {
   let commitString = `autogit ${date} ${time}: Autocommiting ${filePath} ${commitReason} for user ${userInfo[0]}`;
   try {
     execSync(`git commit -a -m "${commitString}"`);
+    console.log(commitString);
   } catch (e) {
     console.error(e.toString());
   }
