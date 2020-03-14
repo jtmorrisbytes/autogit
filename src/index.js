@@ -14,7 +14,10 @@ watcher.on("ready", () => {
 
 watcher.on("change", path => {
   let status = git.status(path);
-  if (status === git.STATUS_CODES.MODIFIED) {
+  if (
+    status === git.STATUS_CODES.MODIFIED ||
+    status === git.STATUS_CODES.UNTRACKED
+  ) {
     git.add(path);
     git.commit("updated file at", path);
   } else {
