@@ -30,9 +30,12 @@ watcher.on("change", path => {
 // for files to add
 watcher.on("add", path => {
   let status = git.status(path);
-  if (status === git.STATUS_CODES.MODIFIED) {
+  if (
+    status === git.STATUS_CODES.MODIFIED ||
+    status === git.STATUS_CODES.UNTRACKED
+  ) {
     git.add(path);
-    console.log(`added file${path}`);
+    console.log(`added file '${path}'`);
   }
   //   console.log("Watching file", path);
 });
