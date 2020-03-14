@@ -71,7 +71,8 @@ function commit(commitReason, filePath) {
 }
 function commitAll(commitReason, filePath) {
   let { date, time } = generateCommitDate();
-  let commitString = `autogit ${date} ${time}: Autocommiting ${filePath} ${commitReason} for user ${userInfo[0]}`;
+  let commitString = `autogit ${date} ${time}: Autocommiting ${filePath ||
+    "\b"} ${commitReason} for user ${userInfo[0]}`;
   try {
     execSync(`git commit -a -m "${commitString}"`);
     console.log(commitString);
