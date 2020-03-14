@@ -9,8 +9,7 @@ const watcher = chokidar.watch("**/**", {
 });
 
 watcher.on("ready", () => {
-  let status = git.status();
-  if (status) {
+  if (git.status()) {
     git.commitAll("on startup");
   }
 
