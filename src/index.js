@@ -24,7 +24,6 @@ watcher.on("add", path => {
 watcher.on("unlink", path => {
   git.add(path);
   git.commit("removed file at", path);
-  console.log("a file was removed", path);
 });
 watcher.on("error", console.error);
 // watcher.on("raw", console.log);
