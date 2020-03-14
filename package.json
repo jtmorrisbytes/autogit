@@ -1,16 +1,17 @@
 {
-  "name": "autogit",
+  "name": "autogitter",
   "version": "0.0.1",
   "description": "A tool to auto commit to git on save",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "postinstall": "echo \"make sure to install git-scm before running this tool"
+    "start": "node bin/index.js",
+    "postinstall": "echo \"make sure to install git-scm before running this tool\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jtmorrisbytes/autogit.git"
   },
+  "bin": "./bin/index.js",
   "author": "Jordan Morris",
   "license": "MIT",
   "bugs": {
@@ -18,7 +19,6 @@
   },
   "homepage": "https://github.com/jtmorrisbytes/autogit#readme",
   "dependencies": {
-    "chokidar": "^3.3.1",
-    "nodegit": "^0.26.5"
+    "chokidar": "^3.3.1"
   }
 }
