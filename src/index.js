@@ -4,7 +4,7 @@ let git = require("./git");
 console.log();
 const watcher = chokidar.watch("**/**", {
   persistent: true,
-  ignored: /node_modules|.git|(?:(^|[\/\\])\..)/
+  ignored: /node_modules|(?:(^|[\/\\])\..)/
   //   cwd: __dirname
 });
 
