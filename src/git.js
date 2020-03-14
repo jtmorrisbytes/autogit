@@ -24,7 +24,7 @@ function status(filePath) {
   // A means added
   // blank means unchanged
   try {
-    return execSync(`git status --short ${filePath}`)
+    return execSync(`git status --short ${filePath || "\b"}`)
       .toString()
       .trim()
       .split(" ")[0];
