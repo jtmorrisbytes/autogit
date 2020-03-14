@@ -45,11 +45,18 @@ function diff(filePath) {
     console.error(e.toString());
   }
 }
-function commit(commitReason, filePath) {
+
+function generateCommitDate() {
   let d = new Date();
   let dateString = `${d.getMonth()}/${d.getDay()}/${d.getFullYear()}`;
   let timeString = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()} ${timezone}`;
+  return {
+    date: dateString,
+    time: timeString
+  };
+}
 
+function commit(commitReason, filePath) {
   let commitString = `Autocommit ${dateString} ${timeString}: ${userInfo[0]} (${
     userInfo[1]
   }) ${commitReason} '${filePath}'\r\n\r\n${diff(filePath)}`.trim();
@@ -61,6 +68,7 @@ function commit(commitReason, filePath) {
     console.error(e.toString());
   }
 }
+function commitAll(commitReason, filePath) {}
 module.exports = {
   add,
   commit,
