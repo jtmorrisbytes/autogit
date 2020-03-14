@@ -16,7 +16,11 @@ function add(filePath) {
   return addMessage;
 }
 function diff(filePath) {
-  return execSync(`git diff ${filePath}`);
+  try {
+    return execSync(`git diff ${filePath}`);
+  } catch (e) {
+    console.error(e);
+  }
 }
 let timezone = "CST";
 let userInfo = getUserInfo();
