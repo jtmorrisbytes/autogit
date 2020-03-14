@@ -23,7 +23,6 @@ watcher.on("change", path => {
   } else {
     console.log(`'${path}' not modified`);
   }
-
   //   git.add(path);
   //   git.commit("updated file at", path);
 });
@@ -34,8 +33,11 @@ watcher.on("add", path => {
 });
 // the watcher will emit this event when a file was deleted
 watcher.on("unlink", path => {
-  git.add(path);
-  git.commit("removed file at", path);
+  let status = git.status(path);
+  if (status && status !== git.STATUS_CODES.MODIFIED) {
+    git.add(path);
+    git.commit("removed file at", path);
+  }
 });
 watcher.on("error", console.error);
 // watcher.on("raw", console.log);
