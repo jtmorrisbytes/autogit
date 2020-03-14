@@ -23,19 +23,15 @@ function status(filePath) {
   // M means modified
   // A means added
   // blank means unchanged
-  let status;
-  let result;
-  let resultPath;
-  if (filePath) {
-    result = execSync(`git status --short ${filePath}`)
+  try {
+    return execSync(`git status --short ${filePath}`)
       .toString()
-      .trim();
+      .trim()
+      .split(" ")[0];
+  } catch (e) {
+    console.log(e);
+    return null;
   }
-  if (result) {
-    status = result.split(" ");
-  }
-  console.log("DIFF result, status", result, status);
-  return status;
 }
 const STATUS_CODES = {
   UNTRACKED: "??",
