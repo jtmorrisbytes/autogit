@@ -29,7 +29,7 @@ function status(filePath) {
       .trim()
       .split(" ")[0];
   } catch (e) {
-    console.log(e);
+    console.log("git.status Error:", e);
     return null;
   }
 }
