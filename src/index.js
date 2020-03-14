@@ -37,6 +37,8 @@ watcher.on("unlink", path => {
   if (status && status !== git.STATUS_CODES.MODIFIED) {
     git.add(path);
     git.commit("removed file at", path);
+  } else {
+    console.log(`'${path}' was not tracked by git. ignoring`);
   }
 });
 watcher.on("error", console.error);
