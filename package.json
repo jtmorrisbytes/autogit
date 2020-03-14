@@ -1,6 +1,6 @@
 {
   "name": "autogitter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A tool to auto commit to git on save",
   "main": "src/index.js",
   "scripts": {
